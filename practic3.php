@@ -20,11 +20,22 @@ interface Human
 
 class User extends Client implements Human
 {
-    
+    public string $username;
     private const CNST='Const';
     public const otherCNST='Go';
     private static $STAT='ant';
     public $notSTAT='vDotu';
+
+    function __construct(string $user)
+    {
+        $this->username=$user;
+        echo 'Родился юзер '.$user.'<br/>';
+    }
+
+    function __destruct()
+    {
+        echo $this->username.' умер, земля ему пухом<br/>';
+    }
 
     public function zeroShower()
     {
@@ -46,14 +57,11 @@ class User extends Client implements Human
     }
 }
 
-$obj= new User();
+$obj= new User('Боря');
 
 echo $obj->showPrivates();
 echo $obj->method1();
 echo $obj->zeroShower();
-
-
-
 
 
 ?>
